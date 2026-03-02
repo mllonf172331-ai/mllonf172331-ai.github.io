@@ -2,6 +2,8 @@ const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const message = document.getElementById("message");
 const buttonsWrapper = document.querySelector(".buttons");
+const resetWrapper = document.getElementById("resetWrapper");
+const resetBtn = document.getElementById("resetBtn");
 
 let noClicks = 0;
 
@@ -70,5 +72,30 @@ yesBtn.addEventListener("click", () => {
   message.textContent = "เย้! ขอบคุณที่ยกโทษให้พี่นะ 💖";
   yesBtn.textContent = "กอดดด 🤗";
   noBtn.style.display = "none";
+  if (resetWrapper) {
+    resetWrapper.style.display = "flex";
+  }
 });
+
+if (resetBtn) {
+  resetBtn.addEventListener("click", () => {
+    // รีเซ็ตข้อความและปุ่ม
+    message.textContent = "";
+    yesBtn.textContent = "Yes ";
+
+    // รีเซ็ตปุ่ม No กลับมาตำแหน่งเดิม
+    noBtn.style.display = "inline-block";
+    noBtn.style.position = "";
+    noBtn.style.left = "";
+    noBtn.style.top = "";
+
+    // รีเซ็ตตัวนับ
+    noClicks = 0;
+
+    // ซ่อนปุ่มเล่นอีกครั้ง
+    if (resetWrapper) {
+      resetWrapper.style.display = "none";
+    }
+  });
+}
 
